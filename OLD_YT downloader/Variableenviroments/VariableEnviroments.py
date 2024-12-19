@@ -1,0 +1,2 @@
+VERSION = "v1.2.1"
+GITHUB_TOKEN = "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"

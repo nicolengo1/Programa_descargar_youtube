@@ -1,0 +1,12 @@
+Version: 0.1.2.1
+CompanyName: nicolengo1\'s imaginary company
+FileDescription: App to download mp4 from YouTube
+InternalName: Youtube mp4 downloader
+LegalCopyright: © nicolengo1\'s imaginary company. All rights reserved.
+OriginalFilename: YouTube mp4 downloader.exe
+ProductName: YouTube mp4 downloader
+Translation:
+  - langID: 0
+    charsetID: 1200
+  - langID: 1033
+    charsetID: 1252

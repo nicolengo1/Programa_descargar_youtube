@@ -1,0 +1,19 @@
+Download_directory = D:\audio
+Skip_file_verification = 1
+Skip_log_verification = 1
+Skip_log_writing = 1
+Audio_bitrate = 128
+
+Download directory = copy the full path for a folder where to download
+Skip_... = 0 for don't skip and 1 for skip
+The file verification checks if the video exists in the folder
+
+The log verification checks if in the txt file exists the video title
+
+The log writing appends in the txt file the video title
+
+The audio bitrate is a value between 35 and 256 - 128 recomended;
+ the higher the better the audio quality will be but it will take more memory
+
+For the changes to take action a restart of the app is needed
+and the txt file needs to be saved
