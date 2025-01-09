@@ -255,7 +255,7 @@ class DownloaderClass:
                     thumbnail = urllib.request.urlretrieve(url, f"{self.Settings.GetDownloadDir()}thumbnail_temp.jpg")
 
                     subprocess.call(
-                        ['ffmpeg', '-y', '-i',
+                        ['./Download_functions/ffmpeg.exe', '-y', '-i',
                          f"{self.Settings.GetDownloadDir()+ "Audio/" + folder_name + audio_title}.mp3", '-i',
                          thumbnail[0], '-map', '0:a', '-map', '1', '-c',
                          'copy',

@@ -20,8 +20,8 @@ class SettingsClass:
 
             download_directory_option += '/Downloads/'
 
-        if not download_directory_option.endswith('/'):
-            download_directory_option += '/'
+        if not download_directory_option.endswith('/') or not download_directory_option.endswith('\\'):
+            download_directory_option += '\\'
 
         if video_audio_option == "video":
             video_audio_option = True
