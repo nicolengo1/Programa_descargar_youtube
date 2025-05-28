@@ -1,3 +1,0 @@
-# pyinstaller --add-data="sanki.ico:." --version-file="file_version_info_mp3.txt" --icon="sanki.ico" --onefile "Youtube mp3 downloader.py"
-
-# pyinstaller --add-data="sanki.ico:." --version-file="file_version_info_mp4.txt" --icon="sanki.ico" --onefile "Youtube mp4 downloader.py"
