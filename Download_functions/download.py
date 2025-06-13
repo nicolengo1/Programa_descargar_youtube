@@ -129,7 +129,7 @@ class DownloaderClass:
 
         self.Console.ConsoleInfo(f"Descargando lista - {playlist_name}")
 
-        playlist_name = "/" + playlist_name + "/"
+        playlist_name = playlist_name + "/"
 
 
         if self.Settings.GetReverse() is True:
@@ -176,8 +176,9 @@ class DownloaderClass:
 
                         video_title = self.__ReplaceTitle(video_info['title'])
 
-                        path_to_file = os.path.join(self.Settings.GetDownloadDir() + folder_name,
-                                                    f"Video\\{video_title}.mp4")
+                        self.Console.ConsoleInfo(f"Ahora descargando - {video_title}")
+
+                        path_to_file = self.Settings.GetDownloadDir() + "Audio/" + folder_name + f'{video_title}.mp4'
 
                         if os.path.exists(path_to_file):
                             if self.Settings.GetOverwrite() is True:
@@ -186,7 +187,7 @@ class DownloaderClass:
                                 ok = 1
                                 i = 5
                                 self.Console.ConsoleWarning(
-                                    "El audio ya existe en la carpeta ( la opcion de sobreescribir no esta activada )")
+                                    "El audio ya existe en la carpeta ( la opcion de sobreescribir no esta activada )\n")
 
                                 break
 
@@ -211,7 +212,7 @@ class DownloaderClass:
                             'outtmpl': self.Settings.GetDownloadDir() + "Video/" + folder_name + f'{video_title}.%(ext)s',
                             'quiet': self.Settings.GetQuietDownload(),
                             'merge_output_format': 'mp4',
-                            # 'format': f'bestvideo[height<={self.Settings.GetMaxRes()}][vbr>={best_format['vbr']-5}]+bestaudio[ext=m4a]/best[height<={self.Settings.GetMaxRes()}]',
+                            'format': f'bestvideo[height<={self.Settings.GetMaxRes()}][vbr>={best_format['vbr']-1}]+bestaudio[ext=m4a]/best[height<={self.Settings.GetMaxRes()}]',
                             'nooverwrites': self.Settings.GetOverwrite(),
                             # 'extract_flat': True,
                             # 'progress_hooks': [self.__progress_hook],
@@ -220,8 +221,6 @@ class DownloaderClass:
                             'ratelimit': None,
                         }
 
-
-                        self.Console.ConsoleInfo(f"Ahora descargando - {video_title}")
 
                         yt.YoutubeDL(video_download_options).download(video_url)
 
@@ -258,17 +257,19 @@ class DownloaderClass:
 
                         audio_title = self.__ReplaceTitle(audio_info['title'])
 
-                        path_to_file = os.path.join(self.Settings.GetDownloadDir() + folder_name,
-                                                    f"Audio\\{audio_title}.mp4")
+                        self.Console.ConsoleInfo(f"Ahora descargando - {audio_title}")
+
+                        path_to_file = self.Settings.GetDownloadDir() + "Audio/" + folder_name + f'{audio_title}.mp3'
 
                         if os.path.exists(path_to_file):
                             if self.Settings.GetOverwrite() is True:
                                 os.remove(path_to_file)
+
                             else:
                                 ok = 1
                                 i = 5
                                 self.Console.ConsoleWarning(
-                                    "El audio ya existe en la carpeta ( la opcion de sobreescribir no esta activada )")
+                                    "El audio ya existe en la carpeta ( la opcion de sobreescribir no esta activada )\n")
 
                                 break
 
@@ -278,7 +279,7 @@ class DownloaderClass:
                             key=lambda x: x.get('abr', 0)
                         )
 
-                        self.Console.ConsoleInfo(f"Ahora descargando - {audio_title}")
+
 
                         if self.Settings.GetAlbumCover():
                             audio_title += '_temp'
@@ -307,6 +308,7 @@ class DownloaderClass:
 
                         if self.Settings.GetAlbumCover():
                             self.__DownloadThumbnail(audio_info, folder_name, audio_title)
+                            # pass
 
                         self.Console.ConsoleOK("Audio descargado \n")
 
